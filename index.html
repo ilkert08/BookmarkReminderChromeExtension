@@ -7,19 +7,25 @@
 	<title>Chrome Bookmark Reminder</title>
 </head>
 <body>
-	<div>
-		<h1>Chrome Bookmark Reminder</h1>
-	</div>
-	<p>
+	<h1>Bookmark Reminder</h1>
+	<h3 id = "randomBookmarkTitleText">
+		<a id = "randomBookmarkTitle" href="url" target="_blank">link</a>
+	</h3>
+	<p id="randomBookmarkUrlText">
 		You have bookmarked the
-		"<a id = "randomLink" href="url" target="_blank">link</a>"
+		"<a id = "randomBookmarkUrl" href="url" target="_blank">link</a>"
 		web site. Do you want to visit it?
 	</p>
 
-	<p>
+	<p id="removeButtonText">
 		If you are not interested in this bookmark anymore you can simply click remove button.
 	</p>
-	<button type="button">Remove</button>
+
+	<p id = "noBookMarkText">
+		You currently don't have any bookmarks 🧐
+	</p>
+
+	<button id = "removeButton" type="button">Remove</button>
 </body>
 <script src = "script.js">
 </script>
