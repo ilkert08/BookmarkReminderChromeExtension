@@ -5,7 +5,8 @@ let currentRandomBookmarkId = InitialBookmarkId;
 
 function init(){
 	getRandomBookmark();
-	setButtonOnClickEvent();
+	setRemoveButtonOnClickEvent();
+	setRefreshButtonOnClickEvent();
 }
 
 async function removeBookmark(){
@@ -17,9 +18,13 @@ async function removeBookmark(){
 	let isConfirmed = confirm("Are you sure you want to remove this bookmark?");
 	if (isConfirmed) {
 		await chrome.bookmarks.remove(currentRandomBookmarkId, function() {
-			getRandomBookmark(); // Refresh.
+			refreshCurrentBookmark(); // Refresh.
 		});
 	}
+}
+
+function refreshCurrentBookmark(){
+	getRandomBookmark(); // Refresh.
 }
 
 async function getRandomBookmark(){
@@ -44,9 +49,14 @@ async function getRandomBookmark(){
 	});
 }
 
-function setButtonOnClickEvent(){
+function setRemoveButtonOnClickEvent(){
 	document.getElementById("removeButton").addEventListener("click", removeBookmark);
 }
+
+function setRefreshButtonOnClickEvent(){
+	document.getElementById("refreshButton").addEventListener("click", refreshCurrentBookmark);
+}
+
 
 function setDefaultBookmarkPageHtmlValues(){
 
@@ -67,6 +77,9 @@ function setDefaultBookmarkPageHtmlValues(){
 
 	let removeButton = document.getElementById("removeButton");
 	removeButton.style.display = "none";
+
+	let refreshButton = document.getElementById("refreshButton");
+	refreshButton.style.display = "none";
 
 	let noBookMarkText = document.getElementById("noBookMarkText");
 	noBookMarkText.style.display = "block";
@@ -96,6 +109,8 @@ function setSuccessfulBookmarkPageHtmlValues(item){
 	let removeButtonText = document.getElementById("removeButtonText");
 	removeButtonText.style.display = "block";
 
+	let refreshButton = document.getElementById("refreshButton");
+	refreshButton.style.display = "block";
 
 	let noBookMarkText = document.getElementById("noBookMarkText");
 	noBookMarkText.style.display = "none";
