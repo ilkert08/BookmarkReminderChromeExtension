@@ -9,8 +9,6 @@ function init(){
 }
 
 async function removeBookmark(){
-	console.log("Bookmark to delete id: " + currentRandomBookmarkId);
-
 	let isInitialBookmarkId = currentRandomBookmarkId == InitialBookmarkId;
 	if(isInitialBookmarkId){
 		return;
@@ -20,7 +18,6 @@ async function removeBookmark(){
 	if (isConfirmed) {
 		await chrome.bookmarks.remove(currentRandomBookmarkId, function() {
 			getRandomBookmark(); // Refresh.
-			console.log("Bookmark with id: " + currentRandomBookmarkId + " has been removed.");
 		});
 	}
 }
@@ -41,13 +38,10 @@ async function getRandomBookmark(){
 		}
 
 		let randomBookmarkIndex = Math.floor(Math.random() * arrSize);
-		console.log("x1");
 		let item = items[randomBookmarkIndex];
-		console.log("x2");
 		setSuccessfulBookmarkPageHtmlValues(item);
 
 	});
-	console.log("randomBookmark: " + randomBookmark);
 }
 
 function setButtonOnClickEvent(){
