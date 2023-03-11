@@ -25,7 +25,7 @@ async function removeBookmark(){
 async function getRandomBookmark(){
 
 	currentRandomBookmarkId = InitialBookmarkId;
-	let randomBookmark = await chrome.bookmarks.getRecent(NumOfBookmarks, function(items) {
+	await chrome.bookmarks.getRecent(NumOfBookmarks, function(items) {
 
 		let isInitialBookmarkId = currentRandomBookmarkId == InitialBookmarkId;
 		if(isInitialBookmarkId){
